@@ -20,4 +20,9 @@ public class LoginServiceImpl implements LoginService {
 	public List<Map<String, Object>> getUser() throws SQLException {
 		return loginDao.getUser();
 	}
+	
+	@Override
+	public Map<String, Object> getOneUser(Map<String, Object> paramMap) throws SQLException {
+		return loginDao.getOneUser(paramMap);
+	}
 }

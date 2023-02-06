@@ -5,4 +5,10 @@
 	<select id="getUser" resultType="Map">
 		select * from member
 	</select>
+	
+	<select id="getOneUser" parameterType="Map" resultType="Map">
+		select * from member
+		where email = #{email}
+		and password = #{password}
+	</select>
 </mapper>
