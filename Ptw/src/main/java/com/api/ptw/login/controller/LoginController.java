@@ -30,21 +30,6 @@ public class LoginController {
 		return "hhi12123123312hi";
 	}
 	
-	@RequestMapping(path = "/get")
-	public Object getUser() {
-		try {
-			List<Map<String, Object>> userList = loginService.getUser();
-			
-			return userList;
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-			
-			return null;
-		}
-		
-	}
-	
 	@PostMapping(path = "/login")
 	public @ResponseBody Object doLogin(HttpSession session, @RequestBody Map<String, Object> paramMap) { 
 		
@@ -80,25 +65,4 @@ public class LoginController {
 		
 	}
 	
-	@PostMapping(path = "/kill")
-	public @ResponseBody Object doKill(HttpSession session) { 
-		
-		Map<String, Object> resObj = new HashMap<String, Object>();
-		
-		try {
-			
-			resObj.put("code", HttpStatus.CREATED.value());
-			resObj.put("msg", "로그아웃 완료");
-			
-			session.removeAttribute("user_session");
-			
-			return resObj;
-			
-		} catch(Exception e) {
-			resObj.put("code", HttpStatus.INTERNAL_SERVER_ERROR.value());
-			
-			return resObj;
-		}
-		
-	}
 }
