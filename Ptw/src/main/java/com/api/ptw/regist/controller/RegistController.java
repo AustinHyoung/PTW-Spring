@@ -25,11 +25,21 @@ public class RegistController {
 	
 	@PostMapping(path = "/regist")
 	public @ResponseBody Object doRegist(@RequestBody Map<String, Object> paramMap) {
+		System.out.println(paramMap);
 		
 		try {
 			Map<String, Object> resObj = new HashMap<String, Object>();
 			
 			
+			//이메일 중복 체크
+			int overlapUser = registService.overlapUser(paramMap);
+			
+			if(overlapUser == 1) {
+				resObj.put("code", HttpStatus.CONFLICT.value());
+				resObj.put("msg", "이미 존재하는 이메일 입니다.");
+				
+				return resObj;
+			}
 			
 			registService.registUser(paramMap);
 			

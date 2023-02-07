@@ -9,4 +9,7 @@ public interface RegistService {
 
 	@Transactional
 	public void registUser (Map<String, Object> paramMap) throws SQLException;
+	
+	@Transactional
+	public int overlapUser (Map<String, Object> paramMap) throws SQLException;
 }

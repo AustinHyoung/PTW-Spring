@@ -18,4 +18,9 @@ public class RegistDAO {
 	public void registUser (Map<String, Object> paramMap) throws SQLException {
 		sqlSession.insert("RegistDAO.registUser");
 	}
+	
+	@Transactional
+	public int overlapUser (Map<String, Object> paramMap) throws SQLException {
+		return sqlSession.selectOne("RegistDAO.overlapUser");
+	}
 }

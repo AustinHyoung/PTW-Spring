@@ -21,4 +21,9 @@ public class RegistServiceImpl implements RegistService {
 		registDao.registUser(paramMap);
 	}
 	
+	@Override
+	public int overlapUser(Map<String, Object> paramMap) throws SQLException {
+		return registDao.overlapUser(paramMap);
+	}
+	
 }

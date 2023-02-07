@@ -8,4 +8,9 @@
 		values
 		(#{email}, #{name}, #{nickname}, #{password}, now())
 	</insert>
+	
+	<select id="overlapUser" parameterType="Map" resultType="int">
+		select count(*) as cnt from member
+		where email = #{email}
+	</select>
 </mapper>
