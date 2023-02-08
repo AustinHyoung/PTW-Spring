@@ -26,7 +26,8 @@ public class LoginController {
 	private LoginService loginService;
 	
 	@RequestMapping(path = "/hi")
-	public Object hi() {
+	public Object hi(HttpSession session) {
+		System.out.println(session);
 		return "hhi12123123312hi";
 	}
 	
@@ -50,9 +51,9 @@ public class LoginController {
 			resObj.put("msg", "로그인 성공");
 			
 			session.setAttribute("user_session", userChk);
-			session.setMaxInactiveInterval(60*60*2);
+			session.setMaxInactiveInterval(1800);
 			
-			resObj.put("session", session.getAttribute("user_session"));
+			resObj.put("session", session.getId());
 			
 			System.out.println("session ::::" + session.getAttribute("user_session"));
 			
