@@ -16,7 +16,7 @@ public class RegistDAO {
 	
 	@Transactional
 	public void registUser (Map<String, Object> paramMap) throws SQLException {
-		sqlSession.insert("RegistDAO.registUser");
+		sqlSession.insert("RegistDAO.registUser", paramMap);
 	}
 	
 	@Transactional
