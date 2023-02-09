@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.ptw.mail.MailService;
 import com.api.ptw.regist.service.RegistService;
 
 import jakarta.annotation.Resource;
@@ -20,8 +21,13 @@ import jakarta.annotation.Resource;
 @RequestMapping("/apis")
 public class RegistController {
 	
+	private String authNum;
+	
 	@Resource
 	private RegistService registService;
+	
+	@Resource
+	private MailService mailService;
 	
 	@PostMapping(path = "/regist")
 	public @ResponseBody Object doRegist(@RequestBody Map<String, Object> paramMap) {
@@ -52,5 +58,50 @@ public class RegistController {
 			return null;
 		}
 	}
+	
+	@PostMapping(path = "/mail/auth")
+	public @ResponseBody Object mailAuth(@RequestBody String email) {
+		
+		try {
+			Map<String, Object> resObj = new HashMap<String, Object>();
+			
+			authNum = mailService.sendEmail("jhy756@gmail.com");
+			System.out.println(authNum);
+			if(authNum == null) {
+				resObj.put("code", HttpStatus.INTERNAL_SERVER_ERROR.value());
+				resObj.put("msg", "인증번호 전송 실패");
+				
+				return resObj;
+			}
+			
+			resObj.put("code", HttpStatus.CREATED.value());
+			resObj.put("msg", "인증번호 전송 완료");
+			
+			return resObj;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
