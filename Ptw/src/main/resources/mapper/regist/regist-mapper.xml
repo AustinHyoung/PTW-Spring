@@ -13,4 +13,9 @@
 		select count(*) as cnt from member
 		where email = #{email}
 	</select>
+	
+	<select id="findUser" parameterType="Map" resultType="Map">
+		select password from member
+		where email = #{email}
+	</select>
 </mapper>

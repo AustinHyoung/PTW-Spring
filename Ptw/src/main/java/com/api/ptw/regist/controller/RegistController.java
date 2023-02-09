@@ -63,22 +63,30 @@ public class RegistController {
 	@PostMapping(path = "/mail/auth")
 	public @ResponseBody Object mailAuth(@RequestBody Map<String, Object> email) {
 		
+		Map<String, Object> resObj = new HashMap<String, Object>();
 		
 		try {
 			
-			Map<String, Object> resObj = new HashMap<String, Object>();
+			String user_password = registService.findUser(email).get("password").toString();
+			System.out.println(user_password);
 			
-			authNum = mailService.sendEmail(email.get("email").toString());
-			System.out.println(authNum);
+			resObj.put("password", user_password);
+			
+//			authNum = mailService.sendEmail(email.get("email").toString());
+//			System.out.println(authNum);
 			
 			resObj.put("code", HttpStatus.CREATED.value());
-			resObj.put("msg", "인증번호 전송 완료");
+			resObj.put("msg", "비밀번호 전송 완료");
 			
 			return resObj;
 			
 		} catch(Exception e) {
 			e.printStackTrace();
-			return null;
+			
+			resObj.put("code", HttpStatus.NO_CONTENT.value());
+			resObj.put("msg", "가입된 이메일이 아닙니다.");
+			
+			return resObj;
 		}
 	}
 	

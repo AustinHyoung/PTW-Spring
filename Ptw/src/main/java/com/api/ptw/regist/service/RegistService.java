@@ -12,4 +12,7 @@ public interface RegistService {
 	
 	@Transactional
 	public int overlapUser (Map<String, Object> paramMap) throws SQLException;
+
+	@Transactional
+	public Map<String, Object> findUser (Map<String, Object> paramMap) throws SQLException;
 }
