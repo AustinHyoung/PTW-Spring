@@ -70,13 +70,6 @@ public class RegistController {
 			
 			authNum = mailService.sendEmail(email.get("email").toString());
 			System.out.println(authNum);
-			if(authNum == null) {
-				resObj.put("code", HttpStatus.INTERNAL_SERVER_ERROR.value());
-				resObj.put("msg", "인증번호 전송 실패");
-				
-				return resObj;
-			}
-			
 			
 			resObj.put("code", HttpStatus.CREATED.value());
 			resObj.put("msg", "인증번호 전송 완료");
