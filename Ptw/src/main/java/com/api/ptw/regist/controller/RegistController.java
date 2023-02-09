@@ -1,5 +1,6 @@
 package com.api.ptw.regist.controller;
 
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,12 +61,14 @@ public class RegistController {
 	}
 	
 	@PostMapping(path = "/mail/auth")
-	public @ResponseBody Object mailAuth(@RequestBody String email) {
+	public @ResponseBody Object mailAuth(@RequestBody Map<String, Object> email) {
+		
 		
 		try {
+			
 			Map<String, Object> resObj = new HashMap<String, Object>();
 			
-			authNum = mailService.sendEmail("jhy756@gmail.com");
+			authNum = mailService.sendEmail(email.get("email").toString());
 			System.out.println(authNum);
 			if(authNum == null) {
 				resObj.put("code", HttpStatus.INTERNAL_SERVER_ERROR.value());
@@ -73,6 +76,7 @@ public class RegistController {
 				
 				return resObj;
 			}
+			
 			
 			resObj.put("code", HttpStatus.CREATED.value());
 			resObj.put("msg", "인증번호 전송 완료");
