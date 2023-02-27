@@ -5,11 +5,13 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -19,7 +21,7 @@ public class UserController {
 
 	
 	@PostMapping(path = "/logout")
-	public @ResponseBody Object doLogout(HttpSession session) { 
+	public @ResponseBody Object doLogout(HttpServletRequest request) { 
 		
 		Map<String, Object> resObj = new HashMap<String, Object>();
 		
@@ -28,7 +30,10 @@ public class UserController {
 			resObj.put("code", HttpStatus.CREATED.value());
 			resObj.put("msg", "로그아웃 완료");
 			
-			session.removeAttribute("user_session");
+			HttpSession session = request.getSession();
+			
+			
+			session.removeAttribute("session");
 			
 			return resObj;
 			
@@ -39,4 +44,5 @@ public class UserController {
 		}
 		
 	}
+	
 }
