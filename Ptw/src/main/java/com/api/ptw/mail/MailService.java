@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MailService {
 	
-	private final JavaMailSender javaMailSender;
+	private JavaMailSender javaMailSender;
 	
 	private String authNum;
 	
