@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.ptw.user.service.UserService;
+
+import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -19,6 +22,9 @@ import jakarta.servlet.http.HttpSession;
 @RestController
 @RequestMapping("/apis")
 public class UserController {
+	
+	@Resource
+	private UserService userService;
 
 	
 	@PostMapping(path = "/logout")
@@ -47,13 +53,12 @@ public class UserController {
 	}
 	
 	@PutMapping(path = "/put")
-	public @ResponseBody Object doPut(@RequestBody Map<String, Object> param) {
-		Map<String, Object> resObj = new HashMap<String, Object>();
+	public @ResponseBody Object doPut(@RequestBody Map<String, Object> paramMap) {
 		
 		try {
-			System.out.println(param);
+			userService.updateNickname(paramMap);
 			
-			return "풋 테스트 되나";
+			return null;
 		} catch(Exception e) {
 			e.printStackTrace();
 			return null;
