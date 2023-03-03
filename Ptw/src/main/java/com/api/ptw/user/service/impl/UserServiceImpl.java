@@ -19,4 +19,9 @@ public class UserServiceImpl implements UserService {
 	public void updateNickname(Map<String, Object> paramMap) throws SQLException {
 		userDao.updateNickname(paramMap);
 	}
+	
+	@Override
+	public Map<String, Object> getOneUser(Map<String, Object> paramMap) throws SQLException {
+		return userDao.getOneUser(paramMap);
+	}
 }

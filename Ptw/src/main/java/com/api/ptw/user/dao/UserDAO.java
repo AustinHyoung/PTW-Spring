@@ -18,4 +18,9 @@ public class UserDAO {
 	public void updateNickname(Map<String, Object> paramMap) throws SQLException  {
 		sqlSession.update("UserDAO.updateNickname", paramMap);
 	}
+	
+	@Transactional
+	public Map<String, Object> getOneUser(Map<String, Object> paramMap) throws SQLException {
+		return sqlSession.selectOne("UserDAO.getOneUser", paramMap);
+	}
 }
