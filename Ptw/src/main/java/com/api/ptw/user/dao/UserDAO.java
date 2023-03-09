@@ -20,6 +20,11 @@ public class UserDAO {
 	}
 	
 	@Transactional
+	public void updatePassword(Map<String, Object> paramMap) throws SQLException  {
+		sqlSession.update("UserDAO.updatePassword", paramMap);
+	}
+	
+	@Transactional
 	public Map<String, Object> getOneUser(Map<String, Object> paramMap) throws SQLException {
 		return sqlSession.selectOne("UserDAO.getOneUser", paramMap);
 	}

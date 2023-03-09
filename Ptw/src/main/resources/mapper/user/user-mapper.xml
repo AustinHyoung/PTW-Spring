@@ -12,4 +12,10 @@
 		select * from member
 		where email = #{email}
 	</select>
+	
+	<update id="updatePassword" parameterType="Map">
+		update member
+		set password = #{newPassword}
+		where email = #{email}
+	</update>
 </mapper>

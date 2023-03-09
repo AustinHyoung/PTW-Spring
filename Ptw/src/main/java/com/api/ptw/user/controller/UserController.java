@@ -53,8 +53,8 @@ public class UserController {
 		
 	}
 	
-	@PutMapping(path = "/put")
-	public @ResponseBody Object doPut(@RequestBody Map<String, Object> paramMap) {
+	@PutMapping(path = "/nick/change")
+	public @ResponseBody Object doNickChange(@RequestBody Map<String, Object> paramMap) {
 		
 		Map<String, Object> resObj = new HashMap<String, Object>();
 		
@@ -66,6 +66,27 @@ public class UserController {
 			
 			resObj.put("email", userNick.get("EMAIL"));
 			resObj.put("nickname", userNick.get("NICKNAME"));
+			
+			
+			return resObj;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@PutMapping(path = "/password/change")
+	public @ResponseBody Object doPwChange(@RequestBody Map<String, Object> paramMap) {
+		
+		Map<String, Object> resObj = new HashMap<String, Object>();
+		
+		try {
+			System.out.println(paramMap);
+			userService.updatePassword(paramMap);
+			
+			
+			Map<String, Object> userEmail = userService.getOneUser(paramMap);
+			
 			
 			
 			return resObj;
