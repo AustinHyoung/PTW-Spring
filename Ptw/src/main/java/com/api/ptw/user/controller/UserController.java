@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -98,4 +99,47 @@ public class UserController {
 		}
 	}
 	
+	@DeleteMapping(path = "/delete/user")
+	public @ResponseBody Object deleteUser(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) {
+		Map<String, Object> resObj = new HashMap<String, Object>();
+		
+		try {
+			System.out.println(paramMap);
+			userService.deleteUser(paramMap);
+			resObj.put("code", HttpStatus.OK.value());
+			
+			return resObj;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -23,4 +23,9 @@
 		select password from member
 		where email = #{email}
 	</select>
+	<update id="deleteUser" parameterType="Map"> 
+		update from member
+		set is_delete = 1
+		where email = #{email}
+	</update>
 </mapper>

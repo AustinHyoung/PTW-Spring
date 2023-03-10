@@ -20,6 +20,11 @@ public class UserDAO {
 	}
 	
 	@Transactional
+	public void deleteUser(Map<String, Object> paramMap) throws SQLException  {
+		sqlSession.update("UserDAO.deleteUser", paramMap);
+	}
+	
+	@Transactional
 	public void updatePassword(Map<String, Object> paramMap) throws SQLException  {
 		sqlSession.update("UserDAO.updatePassword", paramMap);
 	}

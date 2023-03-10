@@ -21,6 +21,11 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public void deleteUser(Map<String, Object> paramMap) throws SQLException {
+		userDao.deleteUser(paramMap);
+	}
+	
+	@Override
 	public void updatePassword(Map<String, Object> paramMap) throws SQLException {
 		userDao.updatePassword(paramMap);
 	}
