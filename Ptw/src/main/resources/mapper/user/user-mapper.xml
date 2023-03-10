@@ -18,4 +18,9 @@
 		set password = #{newPassword}
 		where email = #{email}
 	</update>
+	
+	<select id="getOneUserPw" parameterType="Map" resultType="Map">
+		select password from member
+		where email = #{email}
+	</select>
 </mapper>

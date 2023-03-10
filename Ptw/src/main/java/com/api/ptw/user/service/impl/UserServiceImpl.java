@@ -29,4 +29,9 @@ public class UserServiceImpl implements UserService {
 	public Map<String, Object> getOneUser(Map<String, Object> paramMap) throws SQLException {
 		return userDao.getOneUser(paramMap);
 	}
+	
+	@Override
+	public Map<String, Object> getOneUserPw(Map<String, Object> paramMap) throws SQLException {
+		return userDao.getOneUserPw(paramMap);
+	}
 }

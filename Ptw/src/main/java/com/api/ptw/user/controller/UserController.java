@@ -76,18 +76,19 @@ public class UserController {
 	}
 	
 	@PutMapping(path = "/password/change")
-	public @ResponseBody Object doPwChange(@RequestBody Map<String, Object> paramMap) {
+	public @ResponseBody Object doPwChange(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) {
 		
 		Map<String, Object> resObj = new HashMap<String, Object>();
 		
 		try {
-			System.out.println(paramMap);
+			Map<String, Object> password = userService.getOneUserPw(paramMap);
+			System.out.println(password);
+			if(!paramMap.get("password").equals(password.get("password"))) {
+				resObj.put("msg", "현재 비밀번호가 일치 하지 않습니다.");
+				
+				return resObj;
+			}
 			userService.updatePassword(paramMap);
-			
-			
-			Map<String, Object> userEmail = userService.getOneUser(paramMap);
-			
-			
 			
 			return resObj;
 		} catch(Exception e) {

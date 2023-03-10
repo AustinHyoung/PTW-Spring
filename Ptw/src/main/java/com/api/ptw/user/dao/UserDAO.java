@@ -28,4 +28,9 @@ public class UserDAO {
 	public Map<String, Object> getOneUser(Map<String, Object> paramMap) throws SQLException {
 		return sqlSession.selectOne("UserDAO.getOneUser", paramMap);
 	}
+	
+	@Transactional
+	public Map<String, Object> getOneUserPw(Map<String, Object> paramMap) throws SQLException {
+		return sqlSession.selectOne("UserDAO.getOneUserPw", paramMap);
+	}
 }
