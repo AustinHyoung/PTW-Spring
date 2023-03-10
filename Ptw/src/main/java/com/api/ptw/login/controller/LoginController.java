@@ -43,7 +43,7 @@ public class LoginController {
 			System.out.println(userChk);
 			
 			if(userChk == null) {
-				resObj.put("code", HttpStatus.NOT_FOUND.value());
+				resObj.put("code", HttpStatus.BAD_REQUEST.value());
 				resObj.put("msg", "아이디 또는 비밀번호를 확인해주세요.");
 				
 				return resObj;

@@ -85,6 +85,7 @@ public class UserController {
 			System.out.println(password);
 			if(!paramMap.get("password").equals(password.get("password"))) {
 				resObj.put("msg", "현재 비밀번호가 일치 하지 않습니다.");
+				resObj.put("code", HttpStatus.BAD_REQUEST.value());
 				
 				return resObj;
 			}
