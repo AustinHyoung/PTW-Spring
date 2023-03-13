@@ -27,6 +27,7 @@
 	<update id="deleteUser" parameterType="Map"> 
 		update member
 		set is_deleted = 1
+		and deleted_date = now()
 		where email = #{email}
 	</update>
 	
