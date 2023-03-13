@@ -10,5 +10,6 @@
 		select * from member
 		where email = #{email}
 		and password = #{password}
+		and is_deleted = 0
 	</select>
 </mapper>

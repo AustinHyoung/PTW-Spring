@@ -42,7 +42,7 @@ public class LoginController {
 			Map<String, Object> userChk = loginService.getOneUser(paramMap);
 			System.out.println(userChk);
 			
-			if(userChk == null) {
+			if(userChk == null) {	
 				resObj.put("code", HttpStatus.BAD_REQUEST.value());
 				resObj.put("msg", "아이디 또는 비밀번호를 확인해주세요.");
 				
