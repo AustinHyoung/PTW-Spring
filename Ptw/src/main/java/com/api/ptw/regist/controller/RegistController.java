@@ -17,7 +17,6 @@ import com.api.ptw.regist.service.RegistService;
 
 import jakarta.annotation.Resource;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/apis")
 public class RegistController {
