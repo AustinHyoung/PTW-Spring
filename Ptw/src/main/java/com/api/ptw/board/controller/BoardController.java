@@ -21,7 +21,7 @@ public class BoardController {
 	public String getBoardList(HttpSession session) {
 		try {
 			System.out.println(session.getAttribute("session"));
-			return "test";
+			return null;
 		} catch (Exception e) {
 			return null;
 		}
