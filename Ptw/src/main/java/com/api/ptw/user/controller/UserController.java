@@ -64,8 +64,8 @@ public class UserController {
 			Map<String, Object> userNick = userService.getOneUser(paramMap);
 			
 			
-			resObj.put("email", userNick.get("EMAIL"));
-			resObj.put("nickname", userNick.get("NICKNAME"));
+			resObj.put("email", userNick.get("email"));
+			resObj.put("nickname", userNick.get("nickname"));
 			
 			
 			return resObj;

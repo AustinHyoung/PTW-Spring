@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.ptw.board.service.BoardService;
 
 import jakarta.annotation.Resource;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
