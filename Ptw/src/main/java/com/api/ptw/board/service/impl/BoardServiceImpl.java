@@ -1,6 +1,8 @@
 package com.api.ptw.board.service.impl;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,7 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDAO boardDAO;
 	
 	@Override
-	public String getBoardList() throws SQLException{
-		return boardDAO.getBoardList();
+	public List<Map<String, Object>> getBoardList(Map<String, Object> paramMap) throws SQLException{
+		return boardDAO.getBoardList(paramMap);
 	}
 }

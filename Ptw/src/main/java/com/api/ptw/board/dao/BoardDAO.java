@@ -1,6 +1,8 @@
 package com.api.ptw.board.dao;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,7 @@ public class BoardDAO {
 	private SqlSession sqlSession;
 	
 	@Transactional
-	public String getBoardList() throws SQLException {
-		return sqlSession.selectList("BoardDAO.getBoardList");
+	public List<Map<String, Object>> getBoardList(Map<String, Object> paramMap) throws SQLException {
+		return sqlSession.selectList("BoardDAO.getBoardList", paramMap);
 	}
 }
