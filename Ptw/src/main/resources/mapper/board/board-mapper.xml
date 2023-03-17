@@ -6,4 +6,11 @@
 		SELECT * FROM board
 		WHERE member_no = #{member_no} 
 	</select>
+	
+	<insert id="createBoard" parameterType="Map">
+		INSERT INTO board 
+		(member_no, title, create_time)
+		VALUES
+		(#{member_no}, #{title}, NOW());
+	</insert>
 </mapper>
