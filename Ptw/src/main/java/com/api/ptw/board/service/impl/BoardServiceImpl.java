@@ -25,4 +25,9 @@ public class BoardServiceImpl implements BoardService {
 	public void createBoard(Map<String, Object> paramMap) throws SQLException {
 		boardDAO.createBoard(paramMap);
 	}
+	
+	@Override
+	public List<Map<String, Object>> getCardList(String param) throws SQLException{
+		return boardDAO.getCardList(param);
+	}
 }

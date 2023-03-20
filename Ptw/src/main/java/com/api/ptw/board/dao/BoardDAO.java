@@ -24,4 +24,9 @@ public class BoardDAO {
 	public void createBoard(Map<String, Object> paramMap) throws SQLException {
 		sqlSession.insert("BoardDAO.createBoard", paramMap);
 	}
+	
+	@Transactional
+	public List<Map<String, Object>> getCardList(String param) throws SQLException {
+		return sqlSession.selectList("BoardDAO.getCardList", param);
+	}
 }

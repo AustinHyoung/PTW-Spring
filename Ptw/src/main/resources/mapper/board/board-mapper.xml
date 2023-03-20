@@ -13,4 +13,9 @@
 		VALUES
 		(#{member_no}, #{title}, NOW());
 	</insert>
+	
+	<select id="getCardList" parameterType="String" resultType="Map">
+		SELECT * FROM cards_list
+		WHERE board_no = #{board_no} 
+	</select>
 </mapper>

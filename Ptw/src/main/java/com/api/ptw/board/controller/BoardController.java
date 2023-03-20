@@ -1,10 +1,12 @@
 package com.api.ptw.board.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,6 +62,25 @@ public class BoardController {
 			return null;
 		}
 	
+	}
+	
+	@SuppressWarnings("unchecked")
+	@GetMapping(path = "/cardlist/{board_no}")
+	public Object getCardList(HttpSession session,
+							@PathVariable("board_no") String board_no) {
+		
+		Map<String, Object> userInfo = new HashMap<String, Object>();
+		
+		try {
+			userInfo = (Map<String,Object>)session.getAttribute("session");
+					
+			List<Map<String, Object>> cardList = boardService.getCardList(board_no);
+			
+			return cardList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	
 	}
 	
