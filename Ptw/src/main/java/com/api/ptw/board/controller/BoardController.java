@@ -84,6 +84,26 @@ public class BoardController {
 	
 	}
 	
+	@SuppressWarnings("unchecked")
+	@GetMapping(path = "/card/{board_no}")
+	public Object getCard(HttpSession session,
+							@PathVariable("board_no") String board_no) {
+		
+		Map<String, Object> userInfo = new HashMap<String, Object>();
+		
+		try {
+			userInfo = (Map<String,Object>)session.getAttribute("session");
+					
+			List<Map<String, Object>> card = boardService.getCard(board_no);
+			
+			return card;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	
+	}
+	
 	
 	
 	

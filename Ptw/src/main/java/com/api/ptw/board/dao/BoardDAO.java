@@ -29,4 +29,9 @@ public class BoardDAO {
 	public List<Map<String, Object>> getCardList(String param) throws SQLException {
 		return sqlSession.selectList("BoardDAO.getCardList", param);
 	}
+	
+	@Transactional
+	public List<Map<String, Object>> getCard(String param) throws SQLException {
+		return sqlSession.selectList("BoardDAO.getCard", param);
+	}
 }

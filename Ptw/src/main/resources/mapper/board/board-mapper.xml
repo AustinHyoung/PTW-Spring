@@ -18,4 +18,9 @@
 		SELECT * FROM cards_list
 		WHERE board_no = #{board_no} 
 	</select>
+	
+	<select id="getCard" parameterType="String" resultType="Map">
+		SELECT * FROM card
+		WHERE board_no = #{board_no}
+	</select>
 </mapper>
