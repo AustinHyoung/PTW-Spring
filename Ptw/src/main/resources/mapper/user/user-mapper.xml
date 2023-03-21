@@ -33,7 +33,7 @@
 	
 	<delete id="deleteOldUser">
 		<![CDATA[ 
-			DELETE FROM my_table
+			DELETE FROM member
     		WHERE is_deleted = 1 AND deleted_date < DATE_SUB(NOW(), INTERVAL 7 DAY)
 		]]> 
 	</delete>
