@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 public class Scheduler {
 	
 	@Autowired
-	private SchedulerDAO schedulerDao;
+	private SchedulerDAO schedulerDAO;
 	
 	@Scheduled(cron = "0 0 0 * * *")
 	public void deleteOldUser() throws SQLException {
-		schedulerDao.deleteOldUser();
+		schedulerDAO.deleteOldUser();
 	}
 }

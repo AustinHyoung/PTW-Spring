@@ -13,22 +13,22 @@ import com.api.ptw.regist.service.RegistService;
 public class RegistServiceImpl implements RegistService {
 	
 	@Autowired
-	private RegistDAO registDao;
+	private RegistDAO registDAO;
 	
 	
 	@Override
 	public void registUser(Map<String, Object> paramMap) throws SQLException {
-		registDao.registUser(paramMap);
+		registDAO.registUser(paramMap);
 	}
 	
 	@Override
 	public int overlapUser(Map<String, Object> paramMap) throws SQLException {
-		return registDao.overlapUser(paramMap);
+		return registDAO.overlapUser(paramMap);
 	}
 	
 	@Override
 	public Map<String, Object> findUser(Map<String, Object> paramMap) throws SQLException {
-		return registDao.findUser(paramMap);
+		return registDAO.findUser(paramMap);
 	}
 	
 }

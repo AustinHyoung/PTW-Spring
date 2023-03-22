@@ -23,4 +23,11 @@
 		SELECT * FROM card
 		WHERE board_no = #{board_no}
 	</select>
+	
+	<!-- card dnd 업데이트 -->
+	<update id="updateCard" parameterType="Map">
+		update card
+		set card_list_no = #{card_list_no}
+		where card_no = #{card_no}
+	</update>
 </mapper>

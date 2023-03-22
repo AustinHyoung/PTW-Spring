@@ -7,8 +7,11 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.ptw.board.service.BoardService;
@@ -104,22 +107,22 @@ public class BoardController {
 	
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@PutMapping(path = "/card/change")
+	public @ResponseBody Object doCardChange(@RequestBody Map<String, Object> paramMap) {
+		
+		Map<String, Object> resObj = new HashMap<String, Object>();
+		
+		try {
+			
+			boardService.updateCard(paramMap);
+			
+			
+			return resObj;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 	
 	

@@ -34,4 +34,9 @@ public class BoardDAO {
 	public List<Map<String, Object>> getCard(String param) throws SQLException {
 		return sqlSession.selectList("BoardDAO.getCard", param);
 	}
+	
+	@Transactional
+	public void updateCard(Map<String, Object> paramMap) throws SQLException  {
+		sqlSession.update("BoardDAO.updateCard", paramMap);
+	}
 }

@@ -13,30 +13,30 @@ import com.api.ptw.user.service.UserService;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UserDAO userDao;
+	private UserDAO userDAO;
 	
 	@Override
 	public void updateNickname(Map<String, Object> paramMap) throws SQLException {
-		userDao.updateNickname(paramMap);
+		userDAO.updateNickname(paramMap);
 	}
 	
 	@Override
 	public void deleteUser(Map<String, Object> paramMap) throws SQLException {
-		userDao.deleteUser(paramMap);
+		userDAO.deleteUser(paramMap);
 	}
 	
 	@Override
 	public void updatePassword(Map<String, Object> paramMap) throws SQLException {
-		userDao.updatePassword(paramMap);
+		userDAO.updatePassword(paramMap);
 	}
 	
 	@Override
 	public Map<String, Object> getOneUser(Map<String, Object> paramMap) throws SQLException {
-		return userDao.getOneUser(paramMap);
+		return userDAO.getOneUser(paramMap);
 	}
 	
 	@Override
 	public Map<String, Object> getOneUserPw(Map<String, Object> paramMap) throws SQLException {
-		return userDao.getOneUserPw(paramMap);
+		return userDAO.getOneUserPw(paramMap);
 	}
 }

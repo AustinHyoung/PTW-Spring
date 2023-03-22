@@ -14,15 +14,15 @@ import com.api.ptw.login.service.LoginService;
 public class LoginServiceImpl implements LoginService {
 	
 	@Autowired
-	private LoginDAO loginDao;
+	private LoginDAO loginDAO;
 	
 	@Override
 	public List<Map<String, Object>> getUser() throws SQLException {
-		return loginDao.getUser();
+		return loginDAO.getUser();
 	}
 	
 	@Override
 	public Map<String, Object> getOneUser(Map<String, Object> paramMap) throws SQLException {
-		return loginDao.getOneUser(paramMap);
+		return loginDAO.getOneUser(paramMap);
 	}
 }
