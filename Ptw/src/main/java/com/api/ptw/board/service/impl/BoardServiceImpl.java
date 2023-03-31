@@ -40,4 +40,9 @@ public class BoardServiceImpl implements BoardService {
 	public void updateCard(Map<String, Object> paramMap) throws SQLException {
 		boardDAO.updateCard(paramMap);
 	}
+	
+	@Override
+	public Map<String, Object> getLastBoard(Map<String, Object> paramMap) throws SQLException{
+		return boardDAO.getLastBoard(paramMap);
+	}
 }

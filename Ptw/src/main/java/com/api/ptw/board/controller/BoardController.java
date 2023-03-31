@@ -58,6 +58,8 @@ public class BoardController {
 			
 			boardService.createBoard(boardInput);
 			
+			// 최근 보드 넘버
+			System.out.println(boardService.getLastBoard(boardInput));
 			
 			return null;
 		} catch (Exception e) {

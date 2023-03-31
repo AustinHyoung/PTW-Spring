@@ -30,4 +30,12 @@
 		set card_list_no = #{card_list_no}
 		where card_no = #{card_no}
 	</update>
+	
+	<!-- 최근에 만든 보드의 넘버 가져오기 -->
+	<select id="getLastBoard" parameterType="Map" resultType="Map">
+		SELECT DISTINCT LAST_INSERT_ID() AS last_board_no
+		FROM board
+		WHERE member_no = #{member_no}
+	</select>
+	
 </mapper>
