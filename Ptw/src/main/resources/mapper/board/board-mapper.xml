@@ -38,4 +38,10 @@
 		WHERE member_no = #{member_no}
 	</select>
 	
+	<!-- 임시 count 가져오기 테스트용-->
+	<select id="getCount" parameterType="Map" resultType="Map">
+		SELECT count FROM board
+		WHERE board_no = #{board_no}
+	</select>
+	
 </mapper>

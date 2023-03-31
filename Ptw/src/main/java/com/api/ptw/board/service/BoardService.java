@@ -17,4 +17,6 @@ public interface BoardService {
 	public void updateCard(Map<String, Object> paramMap) throws SQLException;
 	
 	public Map<String, Object> getLastBoard(Map<String, Object> paramMap) throws SQLException;
+	
+	public Map<String, Object> getCount(Map<String, Object> paramMap) throws SQLException;
 }

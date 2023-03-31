@@ -44,4 +44,9 @@ public class BoardDAO {
 	public Map<String, Object> getLastBoard(Map<String, Object> paramMap) throws SQLException {
 		return sqlSession.selectOne("BoardDAO.getLastBoard", paramMap);
 	}
+	
+	@Transactional
+	public Map<String, Object> getCount(Map<String, Object> paramMap) throws SQLException {
+		return sqlSession.selectOne("BoardDAO.getCount", paramMap);
+	}
 }

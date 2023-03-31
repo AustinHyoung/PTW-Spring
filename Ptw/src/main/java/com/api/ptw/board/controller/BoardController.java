@@ -50,6 +50,7 @@ public class BoardController {
 		Map<String, Object> userInfo = new HashMap<String, Object>();
 		
 		try {
+			Map<String, Object> resObj = new HashMap<String, Object>();
 			userInfo = (Map<String,Object>)session.getAttribute("session");
 			
 			Map<String, Object> boardInput = new HashMap<>();
@@ -59,9 +60,10 @@ public class BoardController {
 			boardService.createBoard(boardInput);
 			
 			// 최근 보드 넘버
-			System.out.println(boardService.getLastBoard(boardInput));
+			Map<String, Object> lastBoardNo = boardService.getLastBoard(boardInput);
+			System.out.println(lastBoardNo);
 			
-			return null;
+			return 200;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -124,6 +126,28 @@ public class BoardController {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	@GetMapping(path = "/board/data/{board_no}")
+	public Object getBoardData(HttpSession session,
+							@PathVariable("board_no") int board_no) {
+		
+		Map<String, Object> userInfo = new HashMap<String, Object>();
+		
+		try {
+			userInfo = (Map<String,Object>)session.getAttribute("session");
+			
+			Map<String, Object> paramMap = new HashMap<String, Object>();
+			paramMap.put("board_no", board_no);
+			
+			return boardService.getCount(paramMap);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	
 	}
 	
 	
