@@ -150,6 +150,26 @@ public class BoardController {
 	
 	}
 	
+	@PutMapping(path = "/put/count")
+	public @ResponseBody Object doUpdateCount(@RequestBody Map<String, Object> paramMap) {
+		
+		Map<String, Object> resObj = new HashMap<String, Object>();
+		
+		try {
+			
+			System.out.println(paramMap);
+			
+			boardService.setCount(paramMap);
+			
+			resObj.put("msg", "업데이트 완료");
+			
+			return resObj;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	
 	
 	

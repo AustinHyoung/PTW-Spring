@@ -44,4 +44,10 @@
 		WHERE board_no = #{board_no}
 	</select>
 	
+	<update id="setCount" parameterType="Map">
+		UPDATE board
+		set count = #{count}
+		where board_no = #{board_no}
+	</update>
+	
 </mapper>

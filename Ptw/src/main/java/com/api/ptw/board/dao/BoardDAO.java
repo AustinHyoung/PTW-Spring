@@ -49,4 +49,9 @@ public class BoardDAO {
 	public Map<String, Object> getCount(Map<String, Object> paramMap) throws SQLException {
 		return sqlSession.selectOne("BoardDAO.getCount", paramMap);
 	}
+	
+	@Transactional
+	public void setCount(Map<String, Object> paramMap) throws SQLException  {
+		sqlSession.update("BoardDAO.setCount", paramMap);
+	}
 }
