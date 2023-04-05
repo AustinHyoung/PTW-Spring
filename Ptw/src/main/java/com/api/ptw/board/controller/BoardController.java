@@ -60,7 +60,7 @@ public class BoardController {
 			
 			boardService.createBoard(boardInput);
 			
-			// 최근 보드 넘버
+			// 최근 보드 넘버 **************cards_list 초기데이터
 			Map<String, Object> lastBoardNo = boardService.getLastBoard(boardInput);
 			System.out.println(lastBoardNo);
 			
@@ -83,6 +83,36 @@ public class BoardController {
 			System.out.println(initialData);
 			
 			boardService.initialCardsList(initialData);
+			
+			// **********card 초기데이터
+			// **********GET cardListNo
+			Map<String, Object> cardParamMap = new HashMap<String, Object>();
+			cardParamMap.put("board_no", lastBoardNo.get("last_board_no"));
+			cardParamMap.put("title", "Do");
+			
+			Map<String, Object> cardListNo = boardService.getCardListNo(cardParamMap);
+			
+			// **********Insert card
+			
+			List<String> initialContents = new ArrayList<>();
+			
+			initialContents.add("Do 1");
+			initialContents.add("Do 2");
+			initialContents.add("Do 3");
+			
+			List<Map<String, Object>> initialCardData = new ArrayList<>();
+			
+			for (String content: initialContents) {
+				Map<String, Object> data = new HashMap<>();
+				
+				data.put("contents", content);
+				data.put("card_list_no", cardListNo.get("cards_list_no"));
+				data.put("board_no", lastBoardNo.get("last_board_no"));
+				
+				initialCardData.add(data);
+			}
+			
+			boardService.initialCard(initialCardData);
 			
 			resObj.put("code", HttpStatus.OK.value());
 			
