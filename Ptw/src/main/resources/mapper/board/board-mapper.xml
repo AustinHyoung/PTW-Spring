@@ -56,4 +56,21 @@
     		(#{item.board_no}, #{item.title})
   		</foreach>
 	</insert>
+	
+	
+	<select id="getCardListNo" parameterType="Map" resultType="Map">
+		SELECT cards_list_no
+		FROM cards_list
+		WHERE board_no = #{board_no} AND title = #{title}
+	</select>
+	
+	<insert id="initialCard" parameterType="List">
+		INSERT INTO card (contents, card_list_no, board_no) VALUES
+		<foreach collection="list" item="item" separator=",">
+    		(#{item.contents}, #{item.card_list_no}, #{item.board_no})
+  		</foreach>
+	</insert>
+	
+	
+	
 </mapper>
