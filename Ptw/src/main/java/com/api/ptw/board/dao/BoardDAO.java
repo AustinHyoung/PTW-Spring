@@ -59,4 +59,14 @@ public class BoardDAO {
 	public void initialCardsList(List<Map<String, Object>> paramMap) throws SQLException  {
 		sqlSession.insert("BoardDAO.initialCardsList", paramMap);
 	}
+	
+	@Transactional
+	public Map<String, Object> getCardListNo(Map<String, Object> paramMap) throws SQLException {
+		return sqlSession.selectOne("BoardDAO.getCardListNo", paramMap);
+	}
+	
+	@Transactional
+	public void initialCard(List<Map<String, Object>> paramMap) throws SQLException  {
+		sqlSession.insert("BoardDAO.initialCard", paramMap);
+	}
 }

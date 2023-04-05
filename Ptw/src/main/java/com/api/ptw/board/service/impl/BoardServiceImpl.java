@@ -60,4 +60,14 @@ public class BoardServiceImpl implements BoardService {
 	public void initialCardsList(List<Map<String, Object>> paramMap) throws SQLException {
 		boardDAO.initialCardsList(paramMap);
 	}
+	
+	@Override
+	public Map<String, Object> getCardListNo(Map<String, Object> paramMap) throws SQLException{
+		return boardDAO.getCardListNo(paramMap);
+	}
+	
+	@Override
+	public void initialCard(List<Map<String, Object>> paramMap) throws SQLException {
+		boardDAO.initialCard(paramMap);
+	}
 }

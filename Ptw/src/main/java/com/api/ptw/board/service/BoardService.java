@@ -23,4 +23,8 @@ public interface BoardService {
 	public void setCount(Map<String, Object> paramMap) throws SQLException;
 	
 	public void initialCardsList(List<Map<String, Object>> paramMap) throws SQLException;
+	
+	public Map<String, Object> getCardListNo(Map<String, Object> paramMap) throws SQLException;
+	
+	public void initialCard(List<Map<String, Object>> paramMap) throws SQLException;
 }
