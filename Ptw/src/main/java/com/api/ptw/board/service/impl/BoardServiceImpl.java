@@ -55,4 +55,9 @@ public class BoardServiceImpl implements BoardService {
 	public void setCount(Map<String, Object> paramMap) throws SQLException {
 		boardDAO.setCount(paramMap);
 	}
+	
+	@Override
+	public void initialCardsList(List<Map<String, Object>> paramMap) throws SQLException {
+		boardDAO.initialCardsList(paramMap);
+	}
 }

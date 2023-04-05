@@ -54,4 +54,9 @@ public class BoardDAO {
 	public void setCount(Map<String, Object> paramMap) throws SQLException  {
 		sqlSession.update("BoardDAO.setCount", paramMap);
 	}
+	
+	@Transactional
+	public void initialCardsList(List<Map<String, Object>> paramMap) throws SQLException  {
+		sqlSession.insert("BoardDAO.initialCardsList", paramMap);
+	}
 }
