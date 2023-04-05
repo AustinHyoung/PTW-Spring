@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -48,9 +49,9 @@ public class BoardController {
 							@RequestParam Map<String, Object> paramMap) {
 		
 		Map<String, Object> userInfo = new HashMap<String, Object>();
-		
+		Map<String, Object> resObj = new HashMap<String, Object>();
 		try {
-			Map<String, Object> resObj = new HashMap<String, Object>();
+			
 			userInfo = (Map<String,Object>)session.getAttribute("session");
 			
 			Map<String, Object> boardInput = new HashMap<>();
@@ -63,10 +64,35 @@ public class BoardController {
 			Map<String, Object> lastBoardNo = boardService.getLastBoard(boardInput);
 			System.out.println(lastBoardNo);
 			
-			return 200;
+			List<String> initalTitle = new ArrayList<>();
+			
+			initalTitle.add("Do");
+			initalTitle.add("Done");
+			initalTitle.add("Hold");
+			
+			List<Map<String, Object>> initialData = new ArrayList<>();
+			
+			for (String title: initalTitle) {
+				Map<String, Object> data = new HashMap<>();
+				
+				data.put("board_no", lastBoardNo.get("last_board_no"));
+				data.put("title", title);
+				initialData.add(data);
+			}
+			
+			System.out.println(initialData);
+			
+			boardService.initialCardsList(initialData);
+			
+			resObj.put("code", HttpStatus.OK.value());
+			
+			return resObj;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			
+			resObj.put("code", HttpStatus.INTERNAL_SERVER_ERROR.value());
+			
+			return resObj;
 		}
 	
 	}
@@ -128,6 +154,7 @@ public class BoardController {
 		}
 	}
 	
+	// 추후삭제
 	@SuppressWarnings("unchecked")
 	@GetMapping(path = "/board/data/{board_no}")
 	public Object getBoardData(HttpSession session,
@@ -150,6 +177,7 @@ public class BoardController {
 	
 	}
 	
+	// 추후삭제
 	@PutMapping(path = "/put/count")
 	public @ResponseBody Object doUpdateCount(@RequestBody Map<String, Object> paramMap) {
 		
