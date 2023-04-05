@@ -64,15 +64,15 @@ public class BoardController {
 			Map<String, Object> lastBoardNo = boardService.getLastBoard(boardInput);
 			System.out.println(lastBoardNo);
 			
-			List<String> initalTitle = new ArrayList<>();
+			List<String> initialTitle = new ArrayList<>();
 			
-			initalTitle.add("Do");
-			initalTitle.add("Done");
-			initalTitle.add("Hold");
+			initialTitle.add("Do");
+			initialTitle.add("Done");
+			initialTitle.add("Hold");
 			
 			List<Map<String, Object>> initialData = new ArrayList<>();
 			
-			for (String title: initalTitle) {
+			for (String title: initialTitle) {
 				Map<String, Object> data = new HashMap<>();
 				
 				data.put("board_no", lastBoardNo.get("last_board_no"));
