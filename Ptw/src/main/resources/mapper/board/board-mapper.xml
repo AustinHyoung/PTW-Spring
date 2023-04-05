@@ -9,9 +9,9 @@
 	
 	<insert id="createBoard" parameterType="Map">
 		INSERT INTO board 
-		(member_no, title, create_time)
+		(member_no, title, create_time, count)
 		VALUES
-		(#{member_no}, #{title}, NOW());
+		(#{member_no}, #{title}, NOW(), 0);
 	</insert>
 	
 	<select id="getCardList" parameterType="String" resultType="Map">
@@ -50,4 +50,10 @@
 		where board_no = #{board_no}
 	</update>
 	
+	<insert id="initialCardsList" parameterType="List">
+		INSERT INTO cards_list (board_no, title) VALUES
+		<foreach collection="list" item="item" separator=",">
+    		(#{item.board_no}, #{item.title})
+  		</foreach>
+	</insert>
 </mapper>
