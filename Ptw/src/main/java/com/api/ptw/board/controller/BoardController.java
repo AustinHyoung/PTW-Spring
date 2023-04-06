@@ -127,45 +127,45 @@ public class BoardController {
 	
 	}
 	
-	@SuppressWarnings("unchecked")
-	@GetMapping(path = "/cardlist/{board_no}")
-	public Object getCardList(HttpSession session,
-							@PathVariable("board_no") String board_no) {
-		
-		Map<String, Object> userInfo = new HashMap<String, Object>();
-		
-		try {
-			userInfo = (Map<String,Object>)session.getAttribute("session");
-					
-			List<Map<String, Object>> cardList = boardService.getCardList(board_no);
-			
-			return cardList;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+//	@SuppressWarnings("unchecked")
+//	@GetMapping(path = "/cardlist/{board_no}")
+//	public Object getCardList(HttpSession session,
+//							@PathVariable("board_no") String board_no) {
+//		
+//		Map<String, Object> userInfo = new HashMap<String, Object>();
+//		
+//		try {
+//			userInfo = (Map<String,Object>)session.getAttribute("session");
+//					
+//			List<Map<String, Object>> cardList = boardService.getCardList(board_no);
+//			
+//			return cardList;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//	
+//	}
 	
-	}
-	
-	@SuppressWarnings("unchecked")
-	@GetMapping(path = "/card/{board_no}")
-	public Object getCard(HttpSession session,
-							@PathVariable("board_no") String board_no) {
-		
-		Map<String, Object> userInfo = new HashMap<String, Object>();
-		
-		try {
-			userInfo = (Map<String,Object>)session.getAttribute("session");
-					
-			List<Map<String, Object>> card = boardService.getCard(board_no);
-			
-			return card;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	
-	}
+//	@SuppressWarnings("unchecked")
+//	@GetMapping(path = "/card/{board_no}")
+//	public Object getCard(HttpSession session,
+//							@PathVariable("board_no") String board_no) {
+//		
+//		Map<String, Object> userInfo = new HashMap<String, Object>();
+//		
+//		try {
+//			userInfo = (Map<String,Object>)session.getAttribute("session");
+//					
+//			List<Map<String, Object>> card = boardService.getCard(board_no);
+//			
+//			return card;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//	
+//	}
 	
 	@PutMapping(path = "/card/change")
 	public @ResponseBody Object doCardChange(@RequestBody Map<String, Object> paramMap) {
@@ -207,6 +207,63 @@ public class BoardController {
 	
 	}
 	
+	@GetMapping(path = "/board/initial")
+	public Object getBoardInitial(HttpSession session,
+							@RequestParam Map<String, Object> paramMap) {
+		
+		Map<String, Object> userInfo = new HashMap<String, Object>();
+		
+		try {
+			System.out.println(paramMap);
+			// board_no, title
+			Map<String, Object> resObj = new HashMap<String, Object>();
+			resObj.put("board_no", paramMap.get("board_no"));
+			resObj.put("title", paramMap.get("title"));
+			
+			// db에서 가져온 데이터 cards_list
+			List<Map<String, Object>> cards_list = boardService.getCardList(paramMap);
+			
+			// db에서 가져온 데이터 card
+			List<Map<String, Object>> card = boardService.getCard(paramMap);
+			
+			// resObj에 cards_list 로 가져올 리스트
+			List<Map<String, Object>> cardsList = new ArrayList<Map<String, Object>>();
+			
+			// 가져온 cards_list 데이터를 반복시킴
+			for(Map<String, Object> cardListMap: cards_list) {
+				// map을 만들어서 하나씩 데이터를 새로운 key로 db에서 가져온 데이터를 삽입
+				Map<String, Object> cardsListMap = new HashMap<String, Object>();
+				cardsListMap.put("cards_list_no", cardListMap.get("cards_list_no"));
+				cardsListMap.put("title", cardListMap.get("title"));
+				// 새로운 card의 리스트 생성 
+				List<Map<String, Object>> cardsListCardList = new ArrayList<Map<String, Object>>();
+				// 가져온 card 데이터를 반복시킴
+				for (Map<String, Object> cardMap: card) {
+					// card와 card_list의 no이 같은것만 map에 삽입
+					if(cardMap.get("card_list_no").equals(cardListMap.get("cards_list_no"))) {
+						Map<String, Object> cardsListCardMap = new HashMap<String, Object>();
+						cardsListCardMap.put("card_no", cardMap.get("card_no"));
+						cardsListCardMap.put("contents", cardMap.get("contents"));
+						cardsListCardList.add(cardsListCardMap);
+					}
+				}
+				cardsListMap.put("card", cardsListCardList);
+				cardsList.add(cardsListMap);
+			}
+			
+			resObj.put("cards_list", cardsList);
+			
+			System.out.println(resObj);
+			
+			
+			return resObj;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	
+	}
+	
 	// 추후삭제
 	@PutMapping(path = "/put/count")
 	public @ResponseBody Object doUpdateCount(@RequestBody Map<String, Object> paramMap) {
@@ -227,8 +284,5 @@ public class BoardController {
 			return null;
 		}
 	}
-	
-	
-	
 	
 }

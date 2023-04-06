@@ -14,12 +14,12 @@
 		(#{member_no}, #{title}, NOW(), 0);
 	</insert>
 	
-	<select id="getCardList" parameterType="String" resultType="Map">
+	<select id="getCardList" parameterType="Map" resultType="Map">
 		SELECT * FROM cards_list
 		WHERE board_no = #{board_no} 
 	</select>
 	
-	<select id="getCard" parameterType="String" resultType="Map">
+	<select id="getCard" parameterType="Map" resultType="Map">
 		SELECT * FROM card
 		WHERE board_no = #{board_no}
 	</select>

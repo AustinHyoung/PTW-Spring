@@ -26,12 +26,12 @@ public class BoardDAO {
 	}
 	
 	@Transactional
-	public List<Map<String, Object>> getCardList(String param) throws SQLException {
+	public List<Map<String, Object>> getCardList(Map<String, Object> param) throws SQLException {
 		return sqlSession.selectList("BoardDAO.getCardList", param);
 	}
 	
 	@Transactional
-	public List<Map<String, Object>> getCard(String param) throws SQLException {
+	public List<Map<String, Object>> getCard(Map<String, Object> param) throws SQLException {
 		return sqlSession.selectList("BoardDAO.getCard", param);
 	}
 	

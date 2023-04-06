@@ -27,12 +27,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<Map<String, Object>> getCardList(String param) throws SQLException{
+	public List<Map<String, Object>> getCardList(Map<String, Object> param) throws SQLException{
 		return boardDAO.getCardList(param);
 	}
 	
 	@Override
-	public List<Map<String, Object>> getCard(String param) throws SQLException{
+	public List<Map<String, Object>> getCard(Map<String, Object> param) throws SQLException{
 		return boardDAO.getCard(param);
 	}
 	

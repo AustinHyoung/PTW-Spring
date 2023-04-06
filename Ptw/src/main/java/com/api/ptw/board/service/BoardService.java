@@ -10,9 +10,9 @@ public interface BoardService {
 	
 	public void createBoard(Map<String, Object> paramMap) throws SQLException;
 	
-	public List<Map<String, Object>> getCardList(String param) throws SQLException;
+	public List<Map<String, Object>> getCardList(Map<String, Object> param) throws SQLException;
 	
-	public List<Map<String, Object>> getCard(String param) throws SQLException;
+	public List<Map<String, Object>> getCard(Map<String, Object> param) throws SQLException;
 	
 	public void updateCard(Map<String, Object> paramMap) throws SQLException;
 	
