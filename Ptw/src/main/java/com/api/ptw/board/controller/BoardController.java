@@ -235,6 +235,7 @@ public class BoardController {
 				Map<String, Object> cardsListMap = new HashMap<String, Object>();
 				cardsListMap.put("cards_list_no", cardListMap.get("cards_list_no"));
 				cardsListMap.put("title", cardListMap.get("title"));
+				cardsListMap.put("position", cardListMap.get("position"));
 				// 새로운 card의 리스트 생성 
 				List<Map<String, Object>> cardsListCardList = new ArrayList<Map<String, Object>>();
 				// 가져온 card 데이터를 반복시킴
