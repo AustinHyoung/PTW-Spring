@@ -70,4 +70,9 @@ public class BoardServiceImpl implements BoardService {
 	public void initialCard(List<Map<String, Object>> paramMap) throws SQLException {
 		boardDAO.initialCard(paramMap);
 	}
+	
+	@Override
+	public void setCardsListPosition(Map<String, Object> paramMap) throws SQLException {
+		boardDAO.setCardsListPosition(paramMap);
+	}
 }

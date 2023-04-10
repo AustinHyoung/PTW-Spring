@@ -235,7 +235,7 @@ public class BoardController {
 				Map<String, Object> cardsListMap = new HashMap<String, Object>();
 				cardsListMap.put("cards_list_no", cardListMap.get("cards_list_no"));
 				cardsListMap.put("title", cardListMap.get("title"));
-				cardsListMap.put("position", cardListMap.get("position"));
+				cardsListMap.put("list_order", cardListMap.get("list_order"));
 				// 새로운 card의 리스트 생성 
 				List<Map<String, Object>> cardsListCardList = new ArrayList<Map<String, Object>>();
 				// 가져온 card 데이터를 반복시킴
@@ -251,6 +251,7 @@ public class BoardController {
 				cardsListMap.put("card", cardsListCardList);
 				cardsList.add(cardsListMap);
 			}
+			
 			
 			resObj.put("cards_list", cardsList);
 			
@@ -276,6 +277,27 @@ public class BoardController {
 			System.out.println(paramMap);
 			
 			boardService.setCount(paramMap);
+			
+			resObj.put("msg", "업데이트 완료");
+			
+			return resObj;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@PutMapping(path = "/set/position")
+	public @ResponseBody Object doUpdatePosition(@RequestBody Map<String, Object> paramMap) {
+		
+		Map<String, Object> resObj = new HashMap<String, Object>();
+		
+		try {
+			
+			System.out.println(paramMap);
+			
+			boardService.setCardsListPosition(paramMap);
+			
 			
 			resObj.put("msg", "업데이트 완료");
 			
