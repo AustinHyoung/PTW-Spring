@@ -245,6 +245,8 @@ public class BoardController {
 						Map<String, Object> cardsListCardMap = new HashMap<String, Object>();
 						cardsListCardMap.put("card_no", cardMap.get("card_no"));
 						cardsListCardMap.put("contents", cardMap.get("contents"));
+						cardsListCardMap.put("card_order", cardMap.get("card_order"));
+						
 						cardsListCardList.add(cardsListCardMap);
 					}
 				}
@@ -328,6 +330,7 @@ public class BoardController {
 						Map<String, Object> cardsListCardMap = new HashMap<String, Object>();
 						cardsListCardMap.put("card_no", cardMap.get("card_no"));
 						cardsListCardMap.put("contents", cardMap.get("contents"));
+						cardsListCardMap.put("card_order", cardMap.get("card_order"));
 						cardsListCardList.add(cardsListCardMap);
 					}
 				}
