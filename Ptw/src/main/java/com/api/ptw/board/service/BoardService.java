@@ -29,4 +29,10 @@ public interface BoardService {
 	public void initialCard(List<Map<String, Object>> paramMap) throws SQLException;
 	
 	public void setCardsListPosition(Map<String, Object> paramMap) throws SQLException;
+	
+	public void cardMissingPosition(Map<String, Object> paramMap) throws SQLException;
+	
+	public void cardInsertPosition(Map<String, Object> paramMap) throws SQLException;
+
+	public void cardPushPosition(Map<String, Object> paramMap) throws SQLException;
 }

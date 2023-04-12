@@ -75,4 +75,19 @@ public class BoardServiceImpl implements BoardService {
 	public void setCardsListPosition(Map<String, Object> paramMap) throws SQLException {
 		boardDAO.setCardsListPosition(paramMap);
 	}
+	
+	@Override
+	public void cardMissingPosition(Map<String, Object> paramMap) throws SQLException {
+		boardDAO.cardMissingPosition(paramMap);
+	}
+	
+	@Override
+	public void cardInsertPosition(Map<String, Object> paramMap) throws SQLException {
+		boardDAO.cardInsertPosition(paramMap);
+	}
+	
+	@Override
+	public void cardPushPosition(Map<String, Object> paramMap) throws SQLException {
+		boardDAO.cardPushPosition(paramMap);
+	}
 }

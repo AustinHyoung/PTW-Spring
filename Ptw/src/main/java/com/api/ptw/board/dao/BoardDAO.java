@@ -74,4 +74,21 @@ public class BoardDAO {
 	public void setCardsListPosition(Map<String, Object> paramMap) throws SQLException  {
 		sqlSession.update("BoardDAO.setCardsListPosition", paramMap);
 	}
+	
+	@Transactional
+	public void cardMissingPosition(Map<String, Object> paramMap) throws SQLException  {
+		sqlSession.update("BoardDAO.cardMissingPosition", paramMap);
+	}
+	
+	@Transactional
+	public void cardInsertPosition(Map<String, Object> paramMap) throws SQLException  {
+		sqlSession.update("BoardDAO.cardInsertPosition", paramMap);
+	}
+	
+	@Transactional
+	public void cardPushPosition(Map<String, Object> paramMap) throws SQLException  {
+		sqlSession.update("BoardDAO.cardPushPosition", paramMap);
+	}
+	
+	
 }

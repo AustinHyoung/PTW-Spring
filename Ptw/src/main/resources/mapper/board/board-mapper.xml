@@ -23,6 +23,7 @@
 	<select id="getCard" parameterType="Map" resultType="Map">
 		SELECT * FROM card
 		WHERE board_no = #{board_no}
+		
 	</select>
 	
 	<!-- card dnd 업데이트 -->
@@ -85,11 +86,24 @@
 			#{item.list_order}
 		</foreach>
 	</update>
-
-
-
-
-
-
+	
+	<!-- card position update -->
+	<update id="cardMissingPosition" parameterType="Map">
+    	UPDATE card
+		SET card_order = card_order - 1
+		WHERE board_no = #{board_no} AND card_list_no = #{source_card_list_no} AND card_order > #{source_card_order}
+	</update>
+	
+	<update id="cardInsertPosition" parameterType="Map">
+	  UPDATE card
+	  SET card_list_no = #{destination_card_list_no}, card_order = #{destination_card_order}
+	  WHERE card_no = #{card_no} AND board_no = #{board_no} AND card_list_no = #{source_card_list_no};
+	</update>
+	
+	<update id="cardPushPosition" parameterType="Map">
+	  UPDATE card
+	  SET card_order = card_order + 1
+	  WHERE board_no = #{board_no} AND card_list_no = #{destination_card_list_no} AND card_order > #{destination_card_order}
+	</update>
 	
 </mapper>
