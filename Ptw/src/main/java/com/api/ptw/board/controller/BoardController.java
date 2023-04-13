@@ -73,13 +73,17 @@ public class BoardController {
 			initialTitle.add("Hold");
 			
 			List<Map<String, Object>> initialData = new ArrayList<>();
+			int initialCardListPosition = 0;
 			
 			for (String title: initialTitle) {
 				Map<String, Object> data = new HashMap<>();
 				
 				data.put("board_no", lastBoardNo.get("last_board_no"));
 				data.put("title", title);
+				data.put("list_order", initialCardListPosition);
 				initialData.add(data);
+				
+				initialCardListPosition += 1;
 			}
 			
 			System.out.println(initialData);
@@ -103,6 +107,7 @@ public class BoardController {
 			initialContents.add("Do 3");
 			
 			List<Map<String, Object>> initialCardData = new ArrayList<>();
+			int initialCardPosition = 0;
 			
 			for (String content: initialContents) {
 				Map<String, Object> data = new HashMap<>();
@@ -110,8 +115,10 @@ public class BoardController {
 				data.put("contents", content);
 				data.put("card_list_no", cardListNo.get("cards_list_no"));
 				data.put("board_no", lastBoardNo.get("last_board_no"));
-				
+				data.put("card_order", initialCardPosition);
 				initialCardData.add(data);
+				
+				initialCardPosition += 1;
 			}
 			
 			boardService.initialCard(initialCardData);

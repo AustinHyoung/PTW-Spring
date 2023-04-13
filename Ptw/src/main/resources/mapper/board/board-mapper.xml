@@ -53,9 +53,9 @@
 	</update>
 	
 	<insert id="initialCardsList" parameterType="List">
-		INSERT INTO cards_list (board_no, title) VALUES
+		INSERT INTO cards_list (board_no, title, list_order) VALUES
 		<foreach collection="list" item="item" separator=",">
-    		(#{item.board_no}, #{item.title})
+    		(#{item.board_no}, #{item.title}, #{item.list_order})
   		</foreach>
 	</insert>
 	
@@ -67,9 +67,9 @@
 	</select>
 	
 	<insert id="initialCard" parameterType="List">
-		INSERT INTO card (contents, card_list_no, board_no) VALUES
+		INSERT INTO card (contents, card_list_no, board_no, card_order) VALUES
 		<foreach collection="list" item="item" separator=",">
-    		(#{item.contents}, #{item.card_list_no}, #{item.board_no})
+    		(#{item.contents}, #{item.card_list_no}, #{item.board_no}, #{item.card_order})
   		</foreach>
 	</insert>
 	
