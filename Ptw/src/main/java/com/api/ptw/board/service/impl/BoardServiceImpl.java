@@ -90,4 +90,9 @@ public class BoardServiceImpl implements BoardService {
 	public void cardPushPosition(Map<String, Object> paramMap) throws SQLException {
 		boardDAO.cardPushPosition(paramMap);
 	}
+	
+	@Override
+	public void deleteBoard(int boardNo) throws SQLException {
+		boardDAO.deleteBoard(boardNo);
+	}
 }

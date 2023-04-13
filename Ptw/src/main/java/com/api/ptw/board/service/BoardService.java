@@ -35,4 +35,6 @@ public interface BoardService {
 	public void cardInsertPosition(Map<String, Object> paramMap) throws SQLException;
 
 	public void cardPushPosition(Map<String, Object> paramMap) throws SQLException;
+	
+	public void deleteBoard(int boardNo) throws SQLException;
 }

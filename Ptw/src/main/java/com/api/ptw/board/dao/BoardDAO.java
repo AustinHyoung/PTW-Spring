@@ -90,5 +90,10 @@ public class BoardDAO {
 		sqlSession.update("BoardDAO.cardPushPosition", paramMap);
 	}
 	
+	@Transactional
+	public void deleteBoard(int boardNo) throws SQLException  {
+		sqlSession.delete("BoardDAO.deleteBoard", boardNo);
+	}
+	
 	
 }

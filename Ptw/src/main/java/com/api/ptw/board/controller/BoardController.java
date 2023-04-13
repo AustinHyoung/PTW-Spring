@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -136,45 +137,6 @@ public class BoardController {
 	
 	}
 	
-//	@SuppressWarnings("unchecked")
-//	@GetMapping(path = "/cardlist/{board_no}")
-//	public Object getCardList(HttpSession session,
-//							@PathVariable("board_no") String board_no) {
-//		
-//		Map<String, Object> userInfo = new HashMap<String, Object>();
-//		
-//		try {
-//			userInfo = (Map<String,Object>)session.getAttribute("session");
-//					
-//			List<Map<String, Object>> cardList = boardService.getCardList(board_no);
-//			
-//			return cardList;
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return null;
-//		}
-//	
-//	}
-	
-//	@SuppressWarnings("unchecked")
-//	@GetMapping(path = "/card/{board_no}")
-//	public Object getCard(HttpSession session,
-//							@PathVariable("board_no") String board_no) {
-//		
-//		Map<String, Object> userInfo = new HashMap<String, Object>();
-//		
-//		try {
-//			userInfo = (Map<String,Object>)session.getAttribute("session");
-//					
-//			List<Map<String, Object>> card = boardService.getCard(board_no);
-//			
-//			return card;
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return null;
-//		}
-//	
-//	}
 	
 	@PutMapping(path = "/card/change")
 	public @ResponseBody Object doCardChange(@RequestBody Map<String, Object> paramMap) {
@@ -457,6 +419,23 @@ public class BoardController {
 			
 			return resObj;
 		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@DeleteMapping(path = "/delete/board/{board_no}")
+	public Object deleteBoard (@PathVariable("board_no") int board_no) {
+		Map<String, Object> resObj = new HashMap<String, Object>();
+		
+		try {
+			
+			boardService.deleteBoard(board_no);
+			
+			resObj.put("code", HttpStatus.OK.value());
+			
+			return resObj;
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}

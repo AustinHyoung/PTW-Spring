@@ -106,4 +106,8 @@
 	  WHERE board_no = #{board_no} AND card_list_no = #{destination_card_list_no} AND card_order > #{destination_card_order}
 	</update>
 	
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM board
+		WHERE board_no = #{boardNo}
+	</delete>
 </mapper>
