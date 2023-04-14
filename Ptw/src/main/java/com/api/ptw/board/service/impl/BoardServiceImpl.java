@@ -92,6 +92,21 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
+	public void cardSamePosition(Map<String, Object> paramMap) throws SQLException {
+		boardDAO.cardSamePosition(paramMap);
+	}
+	
+	@Override
+	public void cardHighSamePosition(Map<String, Object> paramMap) throws SQLException {
+		boardDAO.cardHighSamePosition(paramMap);
+	}
+	
+	@Override
+	public void cardLowSamePosition(Map<String, Object> paramMap) throws SQLException {
+		boardDAO.cardLowSamePosition(paramMap);
+	}
+	
+	@Override
 	public void deleteBoard(int boardNo) throws SQLException {
 		boardDAO.deleteBoard(boardNo);
 	}

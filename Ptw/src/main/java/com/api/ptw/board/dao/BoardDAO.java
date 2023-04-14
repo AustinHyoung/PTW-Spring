@@ -91,6 +91,21 @@ public class BoardDAO {
 	}
 	
 	@Transactional
+	public void cardSamePosition(Map<String, Object> paramMap) throws SQLException  {
+		sqlSession.update("BoardDAO.cardSamePosition", paramMap);
+	}
+	
+	@Transactional
+	public void cardHighSamePosition(Map<String, Object> paramMap) throws SQLException  {
+		sqlSession.update("BoardDAO.cardHighSamePosition", paramMap);
+	}
+	
+	@Transactional
+	public void cardLowSamePosition(Map<String, Object> paramMap) throws SQLException  {
+		sqlSession.update("BoardDAO.cardLowSamePosition", paramMap);
+	}
+	
+	@Transactional
 	public void deleteBoard(int boardNo) throws SQLException  {
 		sqlSession.delete("BoardDAO.deleteBoard", boardNo);
 	}

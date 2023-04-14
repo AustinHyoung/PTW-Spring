@@ -103,8 +103,38 @@
 	<update id="cardPushPosition" parameterType="Map">
 	  UPDATE card
 	  SET card_order = card_order + 1
-	  WHERE board_no = #{board_no} AND card_list_no = #{destination_card_list_no} AND card_order > #{destination_card_order}
+	  WHERE board_no = #{board_no} AND card_list_no = #{destination_card_list_no} AND card_order >= #{destination_card_order}
 	</update>
+	
+	<!-- SAME -->
+	<update id="cardSamePosition" parameterType="Map">
+    	UPDATE card
+    	SET card_order = #{destination_card_order}
+    	WHERE card_no = #{card_no}
+	</update>
+	
+	<update id="cardHighSamePosition" parameterType="Map">
+	<![CDATA[
+		UPDATE card
+    	SET card_order = card_order - 1
+    	WHERE board_no = #{board_no}
+    	AND card_list_no = #{destination_card_list_no}
+    	AND card_order <= #{destination_card_order}
+    	AND card_order > #{source_card_order}
+	]]>
+	</update>
+	
+	<update id="cardLowSamePosition" parameterType="Map">
+    <![CDATA[
+		UPDATE card
+    	SET card_order = card_order + 1
+    	WHERE board_no = #{board_no}
+    	AND card_list_no = #{destination_card_list_no}
+    	AND card_order >= #{destination_card_order}
+    	AND card_order < #{source_card_order}
+	]]>
+	</update>
+	
 	
 	<delete id="deleteBoard" parameterType="int">
 		DELETE FROM board

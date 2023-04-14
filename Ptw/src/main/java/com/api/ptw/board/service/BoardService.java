@@ -36,5 +36,11 @@ public interface BoardService {
 
 	public void cardPushPosition(Map<String, Object> paramMap) throws SQLException;
 	
+	public void cardSamePosition(Map<String, Object> paramMap) throws SQLException;
+	
+	public void cardHighSamePosition(Map<String, Object> paramMap) throws SQLException;
+
+	public void cardLowSamePosition(Map<String, Object> paramMap) throws SQLException;
+	
 	public void deleteBoard(int boardNo) throws SQLException;
 }
