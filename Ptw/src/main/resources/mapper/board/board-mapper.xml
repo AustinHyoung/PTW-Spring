@@ -140,4 +140,12 @@
 		DELETE FROM board
 		WHERE board_no = #{boardNo}
 	</delete>
+	
+	<insert id="addCardsList" parameterType="Map">
+		INSERT INTO cards_list
+		(board_no, title, list_order)
+		VALUES
+		(#{board_no}, #{title}, #{list_order})
+		
+	</insert>
 </mapper>

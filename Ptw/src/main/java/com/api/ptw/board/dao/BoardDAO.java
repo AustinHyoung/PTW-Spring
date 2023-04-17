@@ -110,5 +110,10 @@ public class BoardDAO {
 		sqlSession.delete("BoardDAO.deleteBoard", boardNo);
 	}
 	
+	@Transactional
+	public void addCardsList(Map<String, Object> paramMap) throws SQLException {
+		sqlSession.insert("BoardDAO.addCardsList", paramMap);
+	}
+	
 	
 }
