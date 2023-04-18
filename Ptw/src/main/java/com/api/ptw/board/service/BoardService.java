@@ -47,4 +47,8 @@ public interface BoardService {
 	public void addCardsList(Map<String, Object> paramMap) throws SQLException;
 	
 	public void editCardsList(Map<String, Object> paramMap) throws SQLException;
+	
+	public void deleteCardsListPosition(Map<String, Object> paramMap) throws SQLException;
+	
+	public void deleteCardsList(Map<String, Object> paramMap) throws SQLException;
 }

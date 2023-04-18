@@ -146,7 +146,6 @@
 		(board_no, title, list_order)
 		VALUES
 		(#{board_no}, #{title}, #{list_order})
-		
 	</insert>
 	
 	<update id="editCardsList" parameterType="Map">
@@ -154,4 +153,18 @@
     	SET title = #{title}
     	WHERE cards_list_no = #{cards_list_no}
 	</update>
+	
+	<update id="deleteCardsListPosition" parameterType="Map">
+	<![CDATA[
+		UPDATE cards_list
+    	SET list_order = list_order - 1
+    	WHERE board_no = #{board_no}
+    	AND list_order > #{list_order}
+	]]>
+	</update>
+	
+	<delete id="deleteCardsList" parameterType="Map">
+    	DELETE FROM cards_list
+    	WHERE cards_list_no = #{cards_list_no}
+	</delete>
 </mapper>
