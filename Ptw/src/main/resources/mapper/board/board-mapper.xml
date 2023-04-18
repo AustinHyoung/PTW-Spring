@@ -148,4 +148,10 @@
 		(#{board_no}, #{title}, #{list_order})
 		
 	</insert>
+	
+	<update id="editCardsList" parameterType="Map">
+    	UPDATE cards_list
+    	SET title = #{title}
+    	WHERE cards_list_no = #{cards_list_no}
+	</update>
 </mapper>

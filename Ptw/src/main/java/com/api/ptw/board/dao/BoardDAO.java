@@ -115,5 +115,10 @@ public class BoardDAO {
 		sqlSession.insert("BoardDAO.addCardsList", paramMap);
 	}
 	
+	@Transactional
+	public void editCardsList(Map<String, Object> paramMap) throws SQLException  {
+		sqlSession.update("BoardDAO.editCardsList", paramMap);
+	}
+	
 	
 }
