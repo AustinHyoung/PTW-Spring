@@ -74,17 +74,31 @@
 	</insert>
 	
 	<!-- cards_list position update -->
-	<update id="setCardsListPosition" parameterType="Map">
-    	UPDATE cards_list
-    	SET list_order = CASE list_order
-    	<foreach collection="lists_order" item="item" separator=" ">
-			WHEN #{item.list_order} THEN #{item.change_list_order}	
-		</foreach>
-		END
-		WHERE board_no = #{board_no} AND list_order IN
-		<foreach collection="lists_order" item="item" open="(" close=")" separator=",">
-			#{item.list_order}
-		</foreach>
+	<update id="cardsListInsertPosition" parameterType="Map">
+		UPDATE cards_list
+		SET list_order = #{destination_list_order}
+		WHERE cards_list_no = #{cards_list_no}
+	</update>
+	
+	<update id="cardsListHighPosition" parameterType="Map">
+	<![CDATA[
+		UPDATE cards_list
+		SET list_order = list_order - 1
+		WHERE board_no = #{board_no}
+		AND list_order <= #{destination_list_order}
+		AND list_order > #{source_list_order}
+	]]>
+	</update>
+	
+	<update id="cardsListLowPosition" parameterType="Map">
+	<![CDATA[
+		UPDATE cards_list
+		SET list_order = list_order + 1
+		WHERE board_no = #{board_no}
+		AND list_order >= #{destination_list_order}
+		AND list_order < #{source_list_order}
+	]]>
+		
 	</update>
 	
 	<!-- card position update -->
@@ -167,4 +181,11 @@
     	DELETE FROM cards_list
     	WHERE cards_list_no = #{cards_list_no}
 	</delete>
+	
+	<insert id="addCard" parameterType="Map">
+		INSERT INTO card
+		(contents, card_list_no, board_no, card_order)
+		VALUES
+		(#{contents}, #{card_list_no}, #{board_no}, #{card_order})
+	</insert>
 </mapper>

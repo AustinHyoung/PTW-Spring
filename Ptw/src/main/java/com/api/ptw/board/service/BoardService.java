@@ -28,7 +28,6 @@ public interface BoardService {
 	
 	public void initialCard(List<Map<String, Object>> paramMap) throws SQLException;
 	
-	public void setCardsListPosition(Map<String, Object> paramMap) throws SQLException;
 	
 	public void cardMissingPosition(Map<String, Object> paramMap) throws SQLException;
 	
@@ -51,4 +50,12 @@ public interface BoardService {
 	public void deleteCardsListPosition(Map<String, Object> paramMap) throws SQLException;
 	
 	public void deleteCardsList(Map<String, Object> paramMap) throws SQLException;
+	
+	public void addCard(Map<String, Object> paramMap) throws SQLException;
+	
+	public void cardsListInsertPosition(Map<String, Object> paramMap) throws SQLException;
+	
+	public void cardsListHighPosition(Map<String, Object> paramMap) throws SQLException;
+
+	public void cardsListLowPosition(Map<String, Object> paramMap) throws SQLException;
 }
