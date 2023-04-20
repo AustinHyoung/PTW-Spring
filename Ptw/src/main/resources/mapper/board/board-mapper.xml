@@ -194,4 +194,19 @@
     	SET contents = #{contents}
     	WHERE card_no = #{card_no}
 	</update>
+	
+	<update id="deleteCardPosition" parameterType="Map">
+	<![CDATA[
+		UPDATE card
+    	SET card_order = card_order - 1
+    	WHERE board_no = #{board_no}
+    	AND card_list_no = #{card_list_no}
+    	AND card_order > #{card_order}
+	]]>
+	</update>
+	
+	<delete id="deleteCard" parameterType="Map">
+    	DELETE FROM card
+    	WHERE card_no = #{card_no}
+	</delete>
 </mapper>

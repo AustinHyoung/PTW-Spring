@@ -151,4 +151,14 @@ public class BoardServiceImpl implements BoardService {
 	public void editCard(Map<String, Object> paramMap) throws SQLException {
 		boardDAO.editCard(paramMap);
 	}
+	
+	@Override
+	public void deleteCardPosition(Map<String, Object> paramMap) throws SQLException {
+		boardDAO.deleteCardPosition(paramMap);
+	}
+	
+	@Override
+	public void deleteCard(Map<String, Object> paramMap) throws SQLException {
+		boardDAO.deleteCard(paramMap);
+	}
 }

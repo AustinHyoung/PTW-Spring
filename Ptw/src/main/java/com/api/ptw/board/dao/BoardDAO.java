@@ -150,5 +150,15 @@ public class BoardDAO {
 		sqlSession.update("BoardDAO.editCard", paramMap);
 	}
 	
+	@Transactional
+	public void deleteCardPosition(Map<String, Object> paramMap) throws SQLException  {
+		sqlSession.update("BoardDAO.deleteCardPosition", paramMap);
+	}
+	
+	@Transactional
+	public void deleteCard(Map<String, Object> paramMap) throws SQLException  {
+		sqlSession.delete("BoardDAO.deleteCard", paramMap);
+	}
+	
 	
 }
