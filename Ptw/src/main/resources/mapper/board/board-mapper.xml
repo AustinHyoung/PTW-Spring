@@ -9,9 +9,9 @@
 	
 	<insert id="createBoard" parameterType="Map">
 		INSERT INTO board 
-		(member_no, title, create_time, count)
+		(member_no, title, create_time)
 		VALUES
-		(#{member_no}, #{title}, NOW(), 0);
+		(#{member_no}, #{title}, NOW());
 	</insert>
 	
 	<select id="getCardList" parameterType="Map" resultType="Map">
@@ -39,18 +39,6 @@
 		FROM board
 		WHERE member_no = #{member_no}
 	</select>
-	
-	<!-- 임시 count 가져오기 테스트용-->
-	<select id="getCount" parameterType="Map" resultType="Map">
-		SELECT count FROM board
-		WHERE board_no = #{board_no}
-	</select>
-	
-	<update id="setCount" parameterType="Map">
-		UPDATE board
-		set count = #{count}
-		where board_no = #{board_no}
-	</update>
 	
 	<insert id="initialCardsList" parameterType="List">
 		INSERT INTO cards_list (board_no, title, list_order) VALUES

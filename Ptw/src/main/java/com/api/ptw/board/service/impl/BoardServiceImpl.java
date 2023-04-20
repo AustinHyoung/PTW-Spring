@@ -46,15 +46,6 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.getLastBoard(paramMap);
 	}
 	
-	@Override
-	public Map<String, Object> getCount(Map<String, Object> paramMap) throws SQLException{
-		return boardDAO.getCount(paramMap);
-	}
-	
-	@Override
-	public void setCount(Map<String, Object> paramMap) throws SQLException {
-		boardDAO.setCount(paramMap);
-	}
 	
 	@Override
 	public void initialCardsList(List<Map<String, Object>> paramMap) throws SQLException {

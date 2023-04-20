@@ -156,28 +156,6 @@ public class BoardController {
 		}
 	}
 	
-	// 추후삭제
-	@SuppressWarnings("unchecked")
-	@GetMapping(path = "/board/data/{board_no}")
-	public Object getBoardData(HttpSession session,
-							@PathVariable("board_no") int board_no) {
-		
-		Map<String, Object> userInfo = new HashMap<String, Object>();
-		
-		try {
-			userInfo = (Map<String,Object>)session.getAttribute("session");
-			
-			Map<String, Object> paramMap = new HashMap<String, Object>();
-			paramMap.put("board_no", board_no);
-			
-			return boardService.getCount(paramMap);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	
-	}
 	
 	@GetMapping(path = "/board/initial")
 	public Object getBoardInitial(HttpSession session,
@@ -252,28 +230,6 @@ public class BoardController {
 	
 	}
 	
-	// 추후삭제
-	@PutMapping(path = "/put/count")
-	public @ResponseBody Object doUpdateCount(@RequestBody Map<String, Object> paramMap) {
-		
-		Map<String, Object> resObj = new HashMap<String, Object>();
-		
-		try {
-			
-			System.out.println(paramMap);
-			
-			boardService.setCount(paramMap);
-			
-			
-			
-			System.out.println(resObj);
-			
-			return resObj;
-		} catch(Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 	
 	@PutMapping(path = "/set/position")
 	public @ResponseBody Object doUpdatePosition(@RequestBody Map<String, Object> paramMap) {

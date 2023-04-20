@@ -46,16 +46,6 @@ public class BoardDAO {
 	}
 	
 	@Transactional
-	public Map<String, Object> getCount(Map<String, Object> paramMap) throws SQLException {
-		return sqlSession.selectOne("BoardDAO.getCount", paramMap);
-	}
-	
-	@Transactional
-	public void setCount(Map<String, Object> paramMap) throws SQLException  {
-		sqlSession.update("BoardDAO.setCount", paramMap);
-	}
-	
-	@Transactional
 	public void initialCardsList(List<Map<String, Object>> paramMap) throws SQLException  {
 		sqlSession.insert("BoardDAO.initialCardsList", paramMap);
 	}
