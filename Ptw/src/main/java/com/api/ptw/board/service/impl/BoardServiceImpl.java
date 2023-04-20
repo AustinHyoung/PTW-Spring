@@ -146,4 +146,9 @@ public class BoardServiceImpl implements BoardService {
 	public void cardsListLowPosition(Map<String, Object> paramMap) throws SQLException {
 		boardDAO.cardsListLowPosition(paramMap);
 	}
+	
+	@Override
+	public void editCard(Map<String, Object> paramMap) throws SQLException {
+		boardDAO.editCard(paramMap);
+	}
 }

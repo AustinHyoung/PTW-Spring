@@ -58,4 +58,6 @@ public interface BoardService {
 	public void cardsListHighPosition(Map<String, Object> paramMap) throws SQLException;
 
 	public void cardsListLowPosition(Map<String, Object> paramMap) throws SQLException;
+
+	public void editCard(Map<String, Object> paramMap) throws SQLException;
 }
