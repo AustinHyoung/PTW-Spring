@@ -197,4 +197,10 @@
     	DELETE FROM card
     	WHERE card_no = #{card_no}
 	</delete>
+	
+	<update id="editBoardTitle" parameterType="Map">
+    	UPDATE board
+    	SET title = #{title}
+    	WHERE board_no = #{board_no}
+	</update>
 </mapper>

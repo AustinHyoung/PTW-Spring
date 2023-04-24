@@ -152,4 +152,9 @@ public class BoardServiceImpl implements BoardService {
 	public void deleteCard(Map<String, Object> paramMap) throws SQLException {
 		boardDAO.deleteCard(paramMap);
 	}
+	
+	@Override
+	public void editBoardTitle(Map<String, Object> paramMap) throws SQLException {
+		boardDAO.editBoardTitle(paramMap);
+	}
 }

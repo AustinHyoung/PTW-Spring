@@ -568,7 +568,7 @@ public class BoardController {
 			
 			// board_no, title
 			resObj.put("board_no", paramMap.get("board_no"));
-			resObj.put("title", paramMap.get("title"));
+			resObj.put("title", paramMap.get("board_title"));
 			
 			// db에서 가져온 데이터 cards_list
 			List<Map<String, Object>> cards_list = boardService.getCardList(paramMap);
@@ -641,7 +641,7 @@ public class BoardController {
 			
 			// board_no, title
 			resObj.put("board_no", paramMap.get("board_no"));
-			resObj.put("title", paramMap.get("title"));
+			resObj.put("title", paramMap.get("board_title"));
 			
 			// db에서 가져온 데이터 cards_list
 			List<Map<String, Object>> cards_list = boardService.getCardList(paramMap);
@@ -906,6 +906,76 @@ public class BoardController {
 			resObj.put("cards_list", cardsList);
 			return resObj;
 		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@PutMapping(path = "/edit/title")
+	public @ResponseBody Object editBoardTitle(@RequestBody Map<String, Object> paramMap) {
+		
+		Map<String, Object> resObj = new HashMap<String, Object>();
+		
+		try {
+			
+			boardService.editBoardTitle(paramMap);
+			
+			// board_no, title
+			resObj.put("board_no", paramMap.get("board_no"));
+			resObj.put("title", paramMap.get("title"));
+			
+			// db에서 가져온 데이터 cards_list
+			List<Map<String, Object>> cards_list = boardService.getCardList(paramMap);
+			
+			// db에서 가져온 데이터 card
+			List<Map<String, Object>> card = boardService.getCard(paramMap);
+			
+			// resObj에 cards_list 로 가져올 리스트
+			List<Map<String, Object>> cardsList = new ArrayList<Map<String, Object>>();
+			
+			// 가져온 cards_list 데이터를 반복시킴
+			for(Map<String, Object> cardListMap: cards_list) {
+				// map을 만들어서 하나씩 데이터를 새로운 key로 db에서 가져온 데이터를 삽입
+				Map<String, Object> cardsListMap = new HashMap<String, Object>();
+				cardsListMap.put("cards_list_no", cardListMap.get("cards_list_no"));
+				cardsListMap.put("title", cardListMap.get("title"));
+				cardsListMap.put("list_order", cardListMap.get("list_order"));
+				// 새로운 card의 리스트 생성 
+				List<Map<String, Object>> cardsListCardList = new ArrayList<Map<String, Object>>();
+				// 가져온 card 데이터를 반복시킴
+				for (Map<String, Object> cardMap: card) {
+					// card와 card_list의 no이 같은것만 map에 삽입
+					if(cardMap.get("card_list_no").equals(cardListMap.get("cards_list_no"))) {
+						Map<String, Object> cardsListCardMap = new HashMap<String, Object>();
+						cardsListCardMap.put("card_no", cardMap.get("card_no"));
+						cardsListCardMap.put("contents", cardMap.get("contents"));
+						cardsListCardMap.put("card_order", cardMap.get("card_order"));
+						
+						cardsListCardList.add(cardsListCardMap);
+					}
+				}
+				
+				Collections.sort(cardsListCardList, new Comparator<Map<String, Object>>() {
+					@Override
+					public int compare(Map<String, Object> card1, Map<String, Object> card2) {
+						int cardOrder1 = (int) card1.get("card_order");
+						int cardOrder2 = (int) card2.get("card_order");
+						return Integer.compare(cardOrder1, cardOrder2);
+					}
+				});
+				
+				System.out.println("to server list::::" + cardsListCardList);
+				
+				cardsListMap.put("card", cardsListCardList);
+				cardsList.add(cardsListMap);
+			}
+			
+			
+			resObj.put("cards_list", cardsList);
+			
+			
+			return resObj;
+		} catch(Exception e) {
 			e.printStackTrace();
 			return null;
 		}
