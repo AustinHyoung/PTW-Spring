@@ -20,12 +20,17 @@ public class RegistDAO {
 	}
 	
 	@Transactional
-	public int overlapUser (Map<String, Object> paramMap) throws SQLException {
-		return sqlSession.selectOne("RegistDAO.overlapUser");
+	public int existUserCnt (String email) throws SQLException {
+		return sqlSession.selectOne("RegistDAO.existUserCnt");
 	}
 	
 	@Transactional
 	public Map<String, Object> findUser (Map<String, Object> paramMap) throws SQLException {
 		return sqlSession.selectOne("RegistDAO.findUser", paramMap);
+	}
+	
+	@Transactional
+	public Map<String, Object> existUser (Map<String, Object> paramMap) throws SQLException {
+		return sqlSession.selectOne("RegistDAO.existUser", paramMap);
 	}
 }

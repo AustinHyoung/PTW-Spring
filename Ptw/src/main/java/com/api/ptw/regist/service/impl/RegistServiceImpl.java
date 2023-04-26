@@ -22,13 +22,18 @@ public class RegistServiceImpl implements RegistService {
 	}
 	
 	@Override
-	public int overlapUser(Map<String, Object> paramMap) throws SQLException {
-		return registDAO.overlapUser(paramMap);
+	public int existUserCnt(String email) throws SQLException {
+		return registDAO.existUserCnt(email);
 	}
 	
 	@Override
 	public Map<String, Object> findUser(Map<String, Object> paramMap) throws SQLException {
 		return registDAO.findUser(paramMap);
+	}
+	
+	@Override
+	public Map<String, Object> existUser(Map<String, Object> paramMap) throws SQLException {
+		return registDAO.existUser(paramMap);
 	}
 	
 }

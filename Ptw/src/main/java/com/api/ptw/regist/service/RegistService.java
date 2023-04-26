@@ -7,12 +7,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface RegistService {
 
-	@Transactional
 	public void registUser (Map<String, Object> paramMap) throws SQLException;
 	
-	@Transactional
-	public int overlapUser (Map<String, Object> paramMap) throws SQLException;
+	public int existUserCnt (String email) throws SQLException;
 
-	@Transactional
 	public Map<String, Object> findUser (Map<String, Object> paramMap) throws SQLException;
+	
+	public Map<String, Object> existUser (Map<String, Object> paramMap) throws SQLException;
 }

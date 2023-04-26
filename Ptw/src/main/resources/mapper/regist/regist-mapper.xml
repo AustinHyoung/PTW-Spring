@@ -4,14 +4,20 @@
 <mapper namespace="RegistDAO">
 	<insert id="registUser" parameterType="Map">
 		insert into member
-		(email, name, nickname, password, regist_time)
+		(email, name, nickname, password, regist_time, is_deleted, deleted_date)
 		values
-		(#{email}, #{name}, #{nickname}, #{password}, now())
+		(#{email}, #{name}, #{nickname}, #{password}, now(), 0, null)
 	</insert>
 	
-	<select id="overlapUser" parameterType="Map" resultType="int">
-		select count(*) as cnt from member
-		where email = #{email}
+	<select id="existUserCnt" parameterType="String" resultType="int">
+		SELECT COUNT(*) as cnt from member
+		WHERE email = #{email}
+		
+	</select>
+	
+	<select id="existUser" parameterType="Map" resultType="Map">
+		SELECT * FROM member
+		WHERE email = #{email}
 	</select>
 	
 	<select id="findUser" parameterType="Map" resultType="Map">
