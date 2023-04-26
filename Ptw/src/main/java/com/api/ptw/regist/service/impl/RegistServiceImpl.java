@@ -31,9 +31,4 @@ public class RegistServiceImpl implements RegistService {
 		return registDAO.findUser(paramMap);
 	}
 	
-	@Override
-	public Map<String, Object> existUser(Map<String, Object> paramMap) throws SQLException {
-		return registDAO.existUser(paramMap);
-	}
-	
 }

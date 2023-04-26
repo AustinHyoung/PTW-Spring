@@ -13,5 +13,4 @@ public interface RegistService {
 
 	public Map<String, Object> findUser (Map<String, Object> paramMap) throws SQLException;
 	
-	public Map<String, Object> existUser (Map<String, Object> paramMap) throws SQLException;
 }

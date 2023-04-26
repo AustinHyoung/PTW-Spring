@@ -15,11 +15,6 @@
 		
 	</select>
 	
-	<select id="existUser" parameterType="Map" resultType="Map">
-		SELECT * FROM member
-		WHERE email = #{email}
-	</select>
-	
 	<select id="findUser" parameterType="Map" resultType="Map">
 		select password from member
 		where email = #{email}

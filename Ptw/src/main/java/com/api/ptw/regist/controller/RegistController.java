@@ -36,24 +36,17 @@ public class RegistController {
 		
 		Map<String, Object> resObj = new HashMap<String, Object>();
 		try {
-			System.out.println(paramMap);
 			
-			Map<String, Object> exUser = registService.existUser(paramMap);
-			System.out.println("exUser:::"+exUser);
-			System.out.println(paramMap.get("email"));
-			int exUserCnt = registService.existUserCnt(paramMap.get("email").toString());
-			System.out.println("exUserCnt:::"+exUserCnt);
+			int existUser = registService.existUserCnt(paramMap.get("email").toString());
 			
 			//이메일 중복 체크
-			//int overlapUser = registService.overlapUser(paramMap);
 			
-			
-//			if(1) {
-//				resObj.put("code", HttpStatus.CONFLICT.value());
-//				resObj.put("msg", "이미 존재하는 이메일 입니다.");
-//				
-//				return resObj;
-//			}
+			if(existUser == 1) {
+				resObj.put("code", HttpStatus.CONFLICT.value());
+				resObj.put("msg", "이미 존재하는 이메일 입니다.");
+				
+				return resObj;
+			}
 			
 			//인증번호 체크
 			if (!paramMap.get("auth_num").equals(authNum)) {

@@ -21,7 +21,7 @@ public class RegistDAO {
 	
 	@Transactional
 	public int existUserCnt (String email) throws SQLException {
-		return sqlSession.selectOne("RegistDAO.existUserCnt");
+		return sqlSession.selectOne("RegistDAO.existUserCnt", email);
 	}
 	
 	@Transactional
