@@ -3,6 +3,7 @@ package com.api.ptw.login.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,9 @@ import jakarta.servlet.http.HttpSession;
 @RestController
 @RequestMapping("/apis")
 public class LoginController {
+	
+	@Value("${test}")
+	private String address;
 
 	@Resource
 	private LoginService loginService;
@@ -29,6 +33,7 @@ public class LoginController {
 	public Object hi(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.setAttribute("name", "hakyoung");
+		System.out.println("api address :" + address);
 		
 		return "hhi12123123312hi";
 	}
