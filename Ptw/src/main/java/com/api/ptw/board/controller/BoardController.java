@@ -38,6 +38,7 @@ public class BoardController {
 		
 		try {
 			userInfo = (Map<String,Object>)session.getAttribute("session");
+			System.out.println(session.getId());
 			List<Map<String, Object>> boardList = boardService.getBoardList(userInfo);
 			System.out.println(boardList);
 			return boardList;
