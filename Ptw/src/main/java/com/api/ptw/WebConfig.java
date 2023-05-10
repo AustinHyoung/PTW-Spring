@@ -18,7 +18,7 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
-			.allowedOrigins("http://localhost:3000", "http://34.168.92.123")
+			.allowedOrigins("http://localhost:3000", "https://pro-track.xyz")
 			.allowedMethods("GET","POST","PUT","DELETE")
 			.allowedHeaders("*")
 			.allowCredentials(true);
@@ -27,7 +27,7 @@ public class WebConfig implements WebMvcConfigurer {
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://34.168.92.123"));
+		configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "https://pro-track.xyz"));
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
 		configuration.setAllowedHeaders(Arrays.asList("*"));
 		configuration.setAllowCredentials(true);
