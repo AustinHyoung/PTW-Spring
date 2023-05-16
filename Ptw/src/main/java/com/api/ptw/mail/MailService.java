@@ -8,6 +8,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import jakarta.mail.MessagingException;
+import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 
@@ -52,12 +53,13 @@ public class MailService {
 	
 	//메일 전송
     public String sendEmail(String toEmail) throws MessagingException, UnsupportedEncodingException {
-        
-        //메일전송에 필요한 정보 설정
-        MimeMessage emailForm = createEmailForm(toEmail);
-        //실제 메일 전송
+    	
+    	//메일전송에 필요한 정보 설정
+    	MimeMessage emailForm = createEmailForm(toEmail);
+    	
+    	//실제 메일 전송
         javaMailSender.send(emailForm);
-
+        
         return authNum; //인증 코드 반환
     }
 }

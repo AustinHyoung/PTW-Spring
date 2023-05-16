@@ -108,14 +108,14 @@ public class RegistController {
 			System.out.println(authNum);
 			
 			resObj.put("code", HttpStatus.OK.value());
-			resObj.put("msg", "인증번호 전송 완료");
+			resObj.put("msg", "인증번호 전송 완료, 메일을 확인해 주세요.");
 			
 			return resObj;
 			
 		} catch(Exception e) {
 			e.printStackTrace();
 			resObj.put("code", HttpStatus.INTERNAL_SERVER_ERROR.value());
-			resObj.put("msg", "인증번호 전송 실패");
+			resObj.put("msg", "인증번호 전송 실패, 이메일 형식을 확인해 주세요.");
 			
 			
 			return resObj;
