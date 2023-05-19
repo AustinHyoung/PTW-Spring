@@ -10,3 +10,6 @@
 
 ## Architecture
 - RESTful
+
+## Database(MySQL) 다이어그램
+![화면 캡처 2023-05-19 153000](https://github.com/AustinHyoung/PTW-Spring/assets/63631952/55f63d14-de9f-48b5-9017-68cc937ae9ca)
