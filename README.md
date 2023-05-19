@@ -9,4 +9,4 @@
 </div>
 
 ## Architecture
-- REST
+- RESTful
